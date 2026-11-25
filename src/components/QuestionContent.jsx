@@ -1,0 +1,118 @@
+import { useMutation, useQuery } from '@apollo/client/react';
+import DialogContent from '@mui/material/DialogContent';
+import { Box, Typography } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
+import ActionIcons from './common/ActionIcons';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ConfirmDialog from './common/ConfirmDialog';
+import useConfirmedAction from '../hooks/useConfirmedAction';
+import useDialog from '../hooks/useDialog';
+import { DELETE_QUESTION } from '../graphql/mutation';
+import { GET_QUESTIONS } from '../graphql/query';
+import AddOrEditQuestionDialog from './AddOrEditQuestionDialog';
+import { useTranslation } from 'react-i18next';
+
+export default function QuestionContent() {
+  const { t } = useTranslation();
+
+  const edit = useDialog();
+  const { data, loading, error } = useQuery(GET_QUESTIONS, {
+    fetchPolicy: 'network-only',
+  });
+  const [deleteQuestion] = useMutation(DELETE_QUESTION, {
+    refetchQueries: [{ query: GET_QUESTIONS }],
+  });
+  const remove = useConfirmedAction({
+    action: item => deleteQuestion({ variables: { id: item.id } }),
+    successToast: t('questionContent.messages.deleteSuccess'),
+    errorToast: t('questionContent.messages.deleteError'),
+  });
+
+  return (
+    <DialogContent>
+      <AddOrEditQuestionDialog
+        open={edit.open}
+        handleClose={edit.handleClose}
+        question={edit.item}
+      />
+      {loading &&
+        Array.from(new Array(4)).map((_, index) => (
+          <Accordion key={index}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              sx={{ backgroundColor: 'custom.table.header' }}
+            >
+              <Skeleton variant="text" width="80%" height={24} />
+            </AccordionSummary>
+            <AccordionDetails>
+              <Skeleton variant="text" width="90%" height={20} />
+              <Skeleton variant="text" width="60%" height={20} />
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      {!loading && !error && data?.allQuestion?.length === 0 && (
+        <Typography variant="body1">
+          {t('questionContent.messages.noQuestions')}
+        </Typography>
+      )}
+      {!loading && !error && data?.allQuestion?.length > 0 && (
+        <>
+          {data.allQuestion.map(question => (
+            <Accordion
+              key={question.id}
+              slotProps={{ heading: { component: 'div' } }}
+            >
+              {/* Edit/delete sit beside the toggle button, not inside it, so
+                  each control keeps its own name for screen readers. */}
+              <Box
+                sx={{
+                  position: 'relative',
+                  '&:hover .MuiAccordionSummary-root': {
+                    backgroundColor: 'custom.table.headerHover',
+                  },
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    backgroundColor: 'custom.table.header',
+                    // Room for, and the height of, the edit/delete buttons.
+                    '& .MuiAccordionSummary-content': {
+                      pr: 9,
+                      minHeight: 30,
+                    },
+                  }}
+                >
+                  <Typography component="span">{question.question}</Typography>
+                </AccordionSummary>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    right: 40,
+                    transform: 'translateY(-50%)',
+                  }}
+                >
+                  <ActionIcons
+                    onEdit={() => edit.handleOpen(question)}
+                    onDelete={() => remove.request(question)}
+                    name={question.question}
+                  />
+                </Box>
+              </Box>
+              <AccordionDetails>{question.answer}</AccordionDetails>
+            </Accordion>
+          ))}
+        </>
+      )}
+      <ConfirmDialog
+        {...remove.dialogProps}
+        title={t('questionContent.dialogs.confirmDelete.title')}
+        content={t('questionContent.dialogs.confirmDelete.content')}
+      />
+    </DialogContent>
+  );
+}

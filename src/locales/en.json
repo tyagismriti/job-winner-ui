@@ -1,0 +1,306 @@
+{
+  "appHeader": {
+    "appTitle": "Job Winner",
+    "newApplication": "New application",
+    "accountMenu": "Account menu",
+    "moreActions": "More actions",
+    "language": "Language",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "bookmarks": "Bookmarks",
+    "qa": "Q&A",
+    "interviewList": "Interview list",
+    "offerList": "Offer list",
+    "profile": "Profile",
+    "githubLink": "Give us a ⭐"
+  },
+  "searchBar": {
+    "placeholder": "Search…"
+  },
+  "dialogs": {
+    "confirmDeletion": {
+      "title": "Confirm deletion",
+      "content": "Are you sure you want to delete this bookmark? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "addBookmark": {
+      "title": "Bookmarks",
+      "editTitle": "Edit bookmark",
+      "fields": {
+        "title": "Title",
+        "url": "URL"
+      },
+      "errors": {
+        "titleRequired": "Title is required.",
+        "urlRequired": "URL is required."
+      },
+      "noUrls": "No URLs",
+      "addTitle": "Add bookmark",
+      "saveError": "Failed to save the bookmark.",
+      "saveButton": "Save bookmark",
+      "deleteSuccess": "Bookmark deleted",
+      "deleteError": "Failed to delete the bookmark."
+    },
+    "addQuestion": {
+      "title": "Add Q&A",
+      "editTitle": "Edit Q&A",
+      "fields": {
+        "question": "Question",
+        "answer": "Answer"
+      },
+      "errors": {
+        "questionRequired": "Question is required.",
+        "answerRequired": "Answer is required."
+      },
+      "error": "Error saving Q&A. Please try again.",
+      "saveButton": "Save Q&A"
+    },
+    "addApplication": {
+      "title": "Add job application",
+      "editTitle": "Edit job application"
+    },
+    "editApplication": {
+      "title": "Edit job application"
+    },
+    "applicationTabs": {
+      "details": "Details",
+      "notes": "Notes"
+    },
+    "interviewList": {
+      "title": "Interview list",
+      "columns": {
+        "companyName": "Company name",
+        "interviewDate": "Interview date",
+        "interviewer": "Interviewer",
+        "note": "Note",
+        "status": "Status",
+        "jobApplication": "Job application"
+      },
+      "jobDetails": "Job details"
+    },
+    "jobApplication": {
+      "addTitle": "New application",
+      "editTitle": "Edit job application",
+      "tabs": {
+        "application": "Application",
+        "interviews": "Interviews",
+        "offer": "Offer"
+      },
+      "addSubtitle": "Track a job you applied to."
+    },
+    "question": {
+      "title": "Q&A"
+    },
+    "profile": {
+      "title": "Profile",
+      "fields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "addressStreet1": "Address line 1",
+        "addressStreet2": "Address line 2",
+        "addressCity": "City",
+        "addressState": "State",
+        "addressZip": "ZIP code",
+        "email": "Email",
+        "telephone": "Phone number",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "personalWebsite": "Personal website"
+      },
+      "success": "Profile saved",
+      "error": "Failed to save the profile.",
+      "subtitle": "Used to fill in applications quickly. Copy any field.",
+      "saveButton": "Save profile",
+      "sections": {
+        "name": "Name",
+        "contact": "Contact",
+        "address": "Address",
+        "links": "Links"
+      }
+    },
+    "offerList": {
+      "title": "Offer list",
+      "columns": {
+        "companyName": "Company name",
+        "offerDate": "Offer date",
+        "salaryOffered": "Salary offered",
+        "note": "Note",
+        "jobApplication": "Job application"
+      },
+      "jobDetails": "Job details"
+    },
+    "confirmInterviewDeletion": {
+      "title": "Confirm deletion",
+      "content": "Are you sure you want to delete this interview? This action cannot be undone."
+    }
+  },
+  "forms": {
+    "applicationForm": {
+      "fields": {
+        "companyName": "Company name",
+        "jobTitle": "Job title",
+        "salaryRange": "Salary range",
+        "description": "Description",
+        "note": "Note",
+        "jobUrl": "Job link",
+        "status": "Status",
+        "appliedDate": "Applied date"
+      },
+      "status": {
+        "open": "Open",
+        "active": "Active",
+        "ghosted": "Ghosted",
+        "rejected": "Rejected"
+      },
+      "errors": {
+        "companyNameRequired": "Company name is required.",
+        "jobTitleRequired": "Job title is required.",
+        "salaryRangeRequired": "Salary range is required.",
+        "appliedDateRequired": "Valid applied date is required."
+      },
+      "error": "Failed to save the job application.",
+      "saveButton": "Save application"
+    },
+    "offerForm": {
+      "fields": {
+        "offerDate": "Offer date",
+        "salaryOffered": "Salary offered",
+        "description": "Description"
+      },
+      "errors": {
+        "offerDateRequired": "Offer date is required.",
+        "salaryOfferedRequired": "Salary offered is required."
+      },
+      "messages": {
+        "deleteError": "Failed to delete the offer.",
+        "error": "An error occurred. Please try again."
+      },
+      "buttons": {
+        "addOffer": "Add offer",
+        "delete": "Delete",
+        "confirmDelete": "Confirm delete",
+        "saveOffer": "Save offer"
+      },
+      "dialogs": {
+        "confirmDelete": {
+          "title": "Confirm deletion",
+          "content": "Are you sure you want to delete this offer? This action cannot be undone."
+        }
+      }
+    },
+    "interviewsForm": {
+      "fields": {
+        "interviewDate": "Interview date",
+        "interviewer": "Interviewer",
+        "description": "Description",
+        "status": "Status"
+      },
+      "errors": {
+        "interviewDateRequired": "Valid interview date is required."
+      }
+    }
+  },
+  "jobApplicationList": {
+    "messages": {
+      "deleteSuccess": "Job application deleted",
+      "deleteError": "Failed to delete the job application.",
+      "fetchError": "Failed to fetch data. Please check your network connection and try again.",
+      "fetchErrorTitle": "Couldn't load applications.",
+      "retry": "Retry"
+    },
+    "dialogs": {
+      "confirmDelete": {
+        "title": "Confirm deletion",
+        "content": "Are you sure you want to delete this job application? This action cannot be undone."
+      }
+    },
+    "card": {
+      "applied": "Applied {{date}}",
+      "edit": "Edit",
+      "delete": "Delete",
+      "editLabel": "Edit {{company}}",
+      "deleteLabel": "Delete {{company}}",
+      "openPosting": "{{company}}: open job posting in a new tab"
+    },
+    "empty": {
+      "title": "Track your first application",
+      "description": "Add the jobs you apply to and follow each one from applied to offer."
+    },
+    "noMatches": {
+      "titleSearch": "No results for “{{query}}”",
+      "titleStatus": "No {{status}} applications",
+      "inStatus": "Nothing matches your search in {{status}} applications.",
+      "tryAnother": "Try a different company, job title, or keyword.",
+      "clearSearch": "Clear search",
+      "showAll": "Show all statuses"
+    }
+  },
+  "jobStatusBar": {
+    "label": "Filter by status",
+    "all": "All",
+    "open": "Open",
+    "active": "Active",
+    "ghosted": "Ghosted",
+    "rejected": "Rejected",
+    "clear": "Clear",
+    "clearLabel": "Clear status filter"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "add": "Add",
+    "save": "Save",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "noData": "No data available.",
+    "na": "N/A",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "error": "Error",
+    "close": "Close",
+    "edit": "Edit",
+    "copy": "Copy",
+    "copied": "Copied",
+    "done": "Done",
+    "deleteNamed": "Delete {{name}}?",
+    "editItem": "Edit {{name}}",
+    "deleteItem": "Delete {{name}}",
+    "retry": "Retry"
+  },
+  "questionContent": {
+    "messages": {
+      "deleteSuccess": "Question deleted",
+      "deleteError": "Failed to delete the question.",
+      "noQuestions": "No Q&A available."
+    },
+    "dialogs": {
+      "confirmDelete": {
+        "title": "Confirm deletion",
+        "content": "Are you sure you want to delete this Q&A? This action cannot be undone."
+      }
+    }
+  },
+  "interviews": {
+    "date": "Interview date",
+    "interviewer": "Interviewer",
+    "status": "Status",
+    "statuses": {
+      "open": "Open",
+      "canceled": "Canceled",
+      "pending": "Pending",
+      "rejected": "Rejected",
+      "expired": "Expired"
+    },
+    "description": "Description",
+    "add": "Add interview",
+    "messages": {
+      "addError": "Error adding interview.",
+      "saveError": "Error saving interview.",
+      "deleteError": "Error deleting interview."
+    },
+    "autosave": "Changes save automatically",
+    "saveStatus": {
+      "saving": "Saving…",
+      "saved": "All changes saved"
+    }
+  }
+}

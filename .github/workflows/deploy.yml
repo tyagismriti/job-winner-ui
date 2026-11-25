@@ -1,0 +1,41 @@
+name: deploy-frontend
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+permissions:
+    contents: read
+    packages: write
+
+jobs:
+  docker-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Build image
+        uses: ./.github/actions/docker-build-or-tag
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          image-name: job-winner-ui
+          dockerfile_dir: .
+
+  update-deploy-repo-tag:
+    needs:
+      - docker-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Generate GitHub App token
+        id: app-token
+        uses: ./.github/actions/update-deployment-repo
+        with:
+          app-name: job-winner
+          deployment-type: frontend
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}

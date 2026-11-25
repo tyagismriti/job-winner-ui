@@ -1,0 +1,64 @@
+import { render, screen } from '@testing-library/react';
+import JobApplicationDialog from '../JobApplicationDialog';
+import { MockedProvider } from '@apollo/client/testing/react';
+import { SnackbarProvider } from '../common/SnackbarContext';
+import dayjs from 'dayjs';
+import '../../i18n';
+
+const mocks = [];
+
+it('Should render New Job application Dialog', async () => {
+  render(
+    <MockedProvider mocks={mocks}>
+      <SnackbarProvider>
+        <JobApplicationDialog
+          jobApplication={{ status: 'open' }}
+          open={true}
+          isNew={true}
+        />
+      </SnackbarProvider>
+    </MockedProvider>
+  );
+
+  expect(
+    screen.getByRole('heading', { name: 'New application' })
+  ).not.toBeNull();
+  const currentDate = dayjs(new Date()).format('MM/DD/YYYY');
+  expect(screen.getByDisplayValue(currentDate)).not.toBeNull();
+  expect(screen.getByLabelText('Company name *')).not.toBeNull();
+  expect(screen.getByLabelText('Job title *')).not.toBeNull();
+  expect(screen.getByLabelText('Salary range *')).not.toBeNull();
+  expect(screen.getByLabelText('Description')).not.toBeNull();
+  expect(screen.getByLabelText('Job link')).not.toBeNull();
+});
+
+it('Should render Edit job application Dialog', async () => {
+  render(
+    <MockedProvider mocks={mocks}>
+      <SnackbarProvider>
+        <JobApplicationDialog
+          jobApplication={{
+            companyName: 'a',
+            jobTitle: 'b',
+            salaryRange: 'c',
+            description: 'd',
+            jobUrl: 'http://example.com',
+            appliedDate: '2021-01-01',
+            status: 'active',
+          }}
+          open={true}
+          isNew={false}
+        />
+      </SnackbarProvider>
+    </MockedProvider>
+  );
+  // The edit dialog is titled with the company name.
+  expect(screen.getByRole('heading', { name: 'a' })).not.toBeNull();
+  expect(screen.getByDisplayValue('a').id).toBe('companyName');
+  expect(screen.getByDisplayValue('b').id).toBe('jobTitle');
+  expect(screen.getByDisplayValue('c').id).toBe('salaryRange');
+  expect(screen.getByDisplayValue('d').id).toBe('description');
+  expect(screen.getByDisplayValue('http://example.com').id).toBe('jobUrl');
+  expect(screen.getByDisplayValue('01/01/2021')).not.toBeNull();
+  expect(screen.getByDisplayValue('active')).not.toBeNull();
+});
