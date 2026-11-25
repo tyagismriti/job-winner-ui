@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDialogs } from './AppDialogsContext';
 import { useLanguageMenuItems } from './LanguageMenuItems';
 
-export const GITHUB_URL = 'https://github.com/januschung/job-winner-ui';
+export const GITHUB_URL = 'https://github.com/tyagismriti/job-winner-ui';
 
 const initials = name =>
   name
